@@ -9,28 +9,39 @@
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="left-container">
-            <div class="logo-container">
-                <img src="src/svg/logo.svg" alt="Logo" class="logo">
+    <header>
+        <div class="logo-container">
+            <img src="src/svg/logo.svg" alt="Logo" class="logo">
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="left-container">
+                <textarea id="inputText" placeholder="Ingrese el texto aquí" class="transparent-input"></textarea>
+                <div class="alert">
+                    <img src="src/img/alert.png" alt="alert">
+                    <span>Solo letras minúsculas y sin acentos</span>
+                </div>
+                <div class="options">
+                    <button id="encryptButton" onclick="encryptText()">Encriptar</button>
+                    <button onclick="decryptText()">Desencriptar</button>
+                </div>
             </div>
-            <input type="text" id="inputText" placeholder="Ingrese el texto aquí" class="transparent-input">
-            <p class="alert">Solo letras minúsculas y sin acentos</p>
-            <div class="options">
-                <button id="encryptButton" onclick="encryptText()">Encriptar</button>
-                <button onclick="decryptText()">Desencriptar</button>
+            <div class="right-container">
+                <div class="muñeco-container">
+                    <img src="src/img/muñeco.png" alt="Muñeco" class="muñeco">
+                </div>
+                <div id="outputContainer">
+                    <div class="output" id="outputText">
+                        <p class="message" id="outputMessage">Ningún mensaje fue encontrado</p>
+                    </div>
+                    <div class="output" id="copyButtonContainer">
+                        <button id="copyButton" onclick="copyText()">Copiar</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="right-container">
-            <div class="muñeco-container" id="muñecoContainer">
-                <img src="src/img/muñeco.png" alt="Muñeco" class="muñeco">
-            </div>
-            <div id="outputContainer">
-                <p class="message" id="outputMessage">Ningún mensaje fue encontrado</p>
-                <button id="copyButton" onclick="copyText()">Copiar</button>
-            </div>
-        </div>
-    </div>
+    </main>
     <script src="js/script.js"></script>
 </body>
 

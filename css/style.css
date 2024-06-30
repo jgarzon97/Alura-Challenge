@@ -1,121 +1,156 @@
+:root {
+    --dark-blue: #0a3871;
+    --main-color: #f3f5fc;
+    --light-blue: #d8dfe8;
+    --inter-font: "Inter", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
 body {
-    align-items: center;
-    background-color: #f9f9f9;
+    background-color: var(--main-color);
+    font-family: var(--inter-font);
+}
+
+header {
+    margin-bottom: 5rem;
+    width: 60%;
+}
+
+header img {
+    width: 150px;
+    height: 60px;
+}
+
+main {
     display: flex;
-    font-family: Arial, sans-serif;
-    justify-content: center;
-    margin: 0;
-    min-height: 100vh;
-    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
 }
 
 .main-container {
-    align-items: center;
-    background-color: #F3F5FC;
-    border-radius: 8px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 2fr 1fr;
-    height: 80vh;
-    justify-content: center;
-    margin: 20px;
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .left-container {
     display: flex;
-    flex: 3;
     flex-direction: column;
-    justify-content: center;
-    padding: 40px;
+    justify-content: space-between;
+    width: 60%;
 }
 
-.logo {
-    margin-bottom: 20px;
-    width: 50px;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.transparent-input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #0A3871;
-    color: #0A3871;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    padding: 15px;
+textarea.transparent-input {
     width: 100%;
-}
-
-.transparent-input::placeholder {
-    color: #0A3871;
+    max-width: 577px;
+    border: none;
+    height: 64dvh;
+    outline: none;
+    background: transparent;
+    font-size: 3.2rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    overflow: auto;
+    resize: none;
 }
 
 .alert {
-    color: #555;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .options {
     display: flex;
-    gap: 10px;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
-    background-color: #6c757d;
-    border: none;
-    border-radius: 4px;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    width: 328px;
+    height: 67px;
+    border-radius: 24px;
+}
+
+button#encryptButton {
+    background: var(--dark-blue);
     color: white;
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 15px 20px;
-    text-transform: uppercase;
+    border: 1px solid var(--dark-blue);
 }
 
-#encryptButton {
-    background-color: #0A3871;
+button#decryptButton {
+    background: transparent;
+    color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
 }
 
-#encryptButton:hover {
-    background-color: #062d5e;
-}
-
-button:not(#encryptButton):hover {
-    background-color: #5a6268;
+.muñeco-container img {
+    max-width: 100%;
+    height: auto;
 }
 
 .right-container {
     align-items: center;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--main-color);
+    border-radius: 32px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
     display: flex;
-    flex: 1;
     flex-direction: column;
-    height: 90%;
+    gap: 2rem;
+    height: 100vh;
     justify-content: center;
-    margin: 20px;
-    padding: 20px;
+    max-width: 40rem;
+    padding: 2rem;
+    width: 100%;
 }
 
-.muñeco {
-    width: 150px;
+#outputContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
 }
 
-.message {
-    color: #333;
-    /*
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-    */
-    max-height: 250px;
-    overflow-y: auto;
-    overflow-wrap: break-word;
-    text-align: center;
+#outputText {
+    box-sizing: border-box;
+    font-size: 3.2rem;
+    margin: 0;
+    max-height: 60vh;
+    overflow: auto;
+    padding: 1rem;
+    word-wrap: break-word;
+}
+
+#outputMessage {
+    margin: 0;
+}
+
+#copyButtonContainer {
+    margin-top: 1rem;
+}
+
+button#copyButtonContainer {
+    background: var(--dark-blue);
+    color: white;
+    border: 1px solid var(--dark-blue);
+}
+
+
+#copyButton:hover {
+    background-color: var(--dark-blue);
 }

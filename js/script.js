@@ -1,3 +1,5 @@
+let encryptedMessage = '';
+
 function encryptText() {
     const inputText = document.getElementById('inputText').value.trim();
     if (inputText === '') {
@@ -5,19 +7,20 @@ function encryptText() {
         return;
     }
 
-    let encryptedText = '';
+    encryptedMessage = '';
 
     for (let i = 0; i < inputText.length; i++) {
         const charCode = inputText.charCodeAt(i);
         const newCharCode = charCode + 3;
-        encryptedText += String.fromCharCode(newCharCode);
+        encryptedMessage += String.fromCharCode(newCharCode);
     }
 
-    document.getElementById('outputMessage').textContent = encryptedText;
+    document.getElementById('outputMessage').textContent = 'Mensaje encriptado, copialo!';
+    document.getElementById('copyButtonContainer').style.display = 'block';
 }
 
 function decryptText() {
-    const inputText = document.getElementById('inputText').value.trim();
+    const inputText = encryptedMessage;
     if (inputText === '') {
         document.getElementById('outputMessage').textContent = 'Ningún mensaje fue encontrado';
         return;
@@ -32,4 +35,13 @@ function decryptText() {
     }
 
     document.getElementById('outputMessage').textContent = decryptedText;
+    document.getElementById('copyButtonContainer').style.display = 'none';
+}
+
+function copyText() {
+    navigator.clipboard.writeText(encryptedMessage).then(() => {
+        console('Texto copiado al portapapeles');
+    }).catch(err => {
+        console.error('Error al copiar el texto: ', err);
+    });
 }
