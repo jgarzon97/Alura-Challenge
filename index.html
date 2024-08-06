@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Encriptador de Texto</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 
 <body>
     <header>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/jgarzon97/Alura-Challenge/24abda08ee1c61fc8b43951a19058f176ee36047/src/svg/Logo.svg" alt="Logo" class="logo">
-        </div>
+        <img src="https://raw.githubusercontent.com/jgarzon97/Alura-Challenge/24abda08ee1c61fc8b43951a19058f176ee36047/src/svg/Logo.svg"
+            alt="Logo" class="logo">
     </header>
     <main>
         <div class="main-container">
@@ -29,10 +29,11 @@
             </div>
             <div class="right-container">
                 <div class="muñeco-container">
-                    <img src="https://github.com/jgarzon97/Alura-Challenge/blob/main/src/img/Munieco.png?raw=true" alt="Muñeco" class="muñeco">
+                    <img src="https://github.com/jgarzon97/Alura-Challenge/blob/main/src/img/Munieco.png?raw=true"
+                        alt="Muñeco" class="muñeco">
                 </div>
                 <div id="outputContainer">
-                    <div class="output" id="outputText">
+                    <div class="inputText" id="outputText">
                         <p class="message" id="outputMessage">Ningún mensaje fue encontrado</p>
                     </div>
                     <div class="output" id="copyButtonContainer">
@@ -42,6 +43,15 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal Structure -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 
