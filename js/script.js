@@ -1,29 +1,32 @@
-// VARIABLES PARA ELEMENTOS DEL HTML
-let inputText = document.getElementById('inputText');
-let outputMessage = document.getElementById('outputMessage');
-let copyButtonContainer = document.getElementById('copyButtonContainer');
-let messageModal = document.getElementById('messageModal');
-let modalMessage = document.getElementById('modalMessage');
-let closeModal = document.getElementsByClassName('close')[0];
-
-// VARIABLE REGEX
+// Definir regex para validar solo letras minúsculas y sin acentos
 const regex = /^[a-z\s]+$/;
 
-// FUNCION PARA MOSTRAR MENSAJE MODAL
-function showModal(message) {
-    modalMessage.textContent = message;
-    messageModal.style.display = 'block';
+// VARIABLES PARA ELEMENTOS DEL HTML
+let inputText, outputText, copyButtonContainer, messageModal, modalMessage, closeModal, muñecoContainer;
 
-    closeModal.onclick = function() {
-        messageModal.style.display = 'none';
-    };
+document.addEventListener('DOMContentLoaded', function () {
+    inputText = document.getElementById('inputText');
+    outputText = document.getElementById('outputText');
+    copyButtonContainer = document.getElementById('copyButtonContainer');
+    messageModal = document.getElementById('messageModal');
+    modalMessage = document.getElementById('modalMessage');
+    closeModal = document.getElementsByClassName('close')[0];
+    muñecoContainer = document.querySelector('.muñeco-container');
 
-    window.onclick = function(event) {
-        if (event.target == messageModal) {
-            messageModal.style.display = 'none';
+    if (closeModal) {
+        // Cerrar el modal al hacer clic en el botón de cierre
+        closeModal.onclick = function () {
+            messageModal.style.display = "none";
         }
-    };
-}
+    }
+
+    // Cerrar el modal al hacer clic fuera de él
+    window.onclick = function (event) {
+        if (event.target === messageModal) {
+            messageModal.style.display = "none";
+        }
+    }
+});
 
 // FUNCION PARA ENCRIPTAR TEXTO
 function encryptText() {
@@ -35,6 +38,12 @@ function encryptText() {
         showModal('El texto debe contener solo letras minúsculas sin acentos ni caracteres especiales');
         return;
     }
+
+    // Ocultar el muñeco
+    muñecoContainer.classList.add('hidden');
+
+    // Expande el textarea para ocupar todo el espacio
+    outputText.style.height = '100%';
 
     for (let i = 0; i < textoParaEncriptar.length; i++) {
         switch (textoParaEncriptar[i]) {
@@ -59,7 +68,7 @@ function encryptText() {
         }
     }
 
-    outputMessage.textContent = texto;
+    outputText.value = texto;
     copyButtonContainer.style.display = 'block';
 }
 
@@ -80,13 +89,13 @@ function decryptText() {
         textoDesencriptado = textoDesencriptado.replaceAll(arraPalabras[i], arraPalabras2[i]);
     }
 
-    outputMessage.textContent = textoDesencriptado;
+    outputText.value = textoDesencriptado;
     copyButtonContainer.style.display = 'none';
 }
 
 // FUNCION DE COPIAR EL TEXTO
 function copyText() {
-    let textoCopiado = outputMessage.textContent;
+    let textoCopiado = outputText.value;
 
     if (textoCopiado.length > 0 && regex.test(textoCopiado)) {
         navigator.clipboard.writeText(textoCopiado).then(() => {
@@ -99,6 +108,11 @@ function copyText() {
                 icon: 'success',
                 title: 'Texto Copiado.'
             });
+            // Borrar el texto y mostrar el muñeco
+            outputText.value = '';
+            muñecoContainer.classList.remove('hidden');
+            outputText.style.height = '50%'; // Restablecer la altura del textarea
+            copyButtonContainer.style.display = 'none';
         }).catch(err => {
             console.error('Error al copiar el texto: ', err);
         });
@@ -107,7 +121,8 @@ function copyText() {
     }
 }
 
-// EVENTOS DE BOTONES
-document.getElementById('encryptButton').addEventListener('click', encryptText);
-document.getElementById('decryptButton').addEventListener('click', decryptText);
-document.getElementById('copyButton').addEventListener('click', copyText);
+// FUNCION PARA MOSTRAR EL MODAL
+function showModal(message) {
+    modalMessage.textContent = message;
+    messageModal.style.display = "block";
+}

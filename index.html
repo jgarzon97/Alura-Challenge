@@ -33,9 +33,7 @@
                         alt="Muñeco" class="muñeco">
                 </div>
                 <div id="outputContainer">
-                    <div class="inputText" id="outputText">
-                        <p class="message" id="outputMessage">Ningún mensaje fue encontrado</p>
-                    </div>
+                    <textarea id="outputText" placeholder="Ningún mensaje fue encontrado" readonly class="transparent-output"></textarea>
                     <div class="output" id="copyButtonContainer">
                         <button id="copyButton" onclick="copyText()">Copiar</button>
                     </div>
@@ -43,6 +41,14 @@
             </div>
         </div>
     </main>
+
+    <footer class="footer">
+        <p>Developed by</p>
+        <img src="./src/svg/icon-github.svg" class="footer__image" alt="GitHub icon">
+        <a class="footer__github" href="https://github.com/jgarzon97">
+            <b class="footer__github__nick">/jgarzon97</b>
+        </a>
+    </footer>
 
     <!-- Modal Structure -->
     <div id="messageModal" class="modal">
@@ -53,6 +59,8 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
