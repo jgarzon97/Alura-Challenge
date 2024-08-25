@@ -28,12 +28,15 @@
                 </div>
             </div>
             <div class="right-container">
-                <div class="muñeco-container">
-                    <img src="https://github.com/jgarzon97/Alura-Challenge/blob/main/src/img/Munieco.png?raw=true"
-                        alt="Muñeco" class="muñeco">
-                </div>
-                <div id="outputContainer">
-                    <textarea id="outputText" placeholder="Ningún mensaje fue encontrado" readonly class="transparent-output"></textarea>
+                <div id="outputContainer" class="output-container">
+                    <div class="muñeco-container hidden" id="muñecoContainer">
+                        <img src="https://github.com/jgarzon97/Alura-Challenge/blob/main/src/img/Munieco.png?raw=true"
+                            alt="Muñeco" class="muñeco">
+                    </div>
+                    <div class="muñeco-container" id="muñecoContainer">
+                        <textarea id="outputText" placeholder="Ningún mensaje fue encontrado" readonly
+                        class="transparent-output"></textarea>
+                    </div>
                     <div class="output" id="copyButtonContainer">
                         <button id="copyButton" onclick="copyText()">Copiar</button>
                     </div>

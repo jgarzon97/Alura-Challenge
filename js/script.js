@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
     closeModal = document.getElementsByClassName('close')[0];
     muñecoContainer = document.querySelector('.muñeco-container');
 
+    muñecoContainer.classList.remove('hidden');
+    copyButtonContainer.style.display = 'none';
+
     if (closeModal) {
         // Cerrar el modal al hacer clic en el botón de cierre
         closeModal.onclick = function () {
@@ -26,11 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
             messageModal.style.display = "none";
         }
     }
+
+    // Convertir el texto del input a minúsculas
+    inputText.addEventListener('input', function () {
+        inputText.value = inputText.value.toLowerCase();
+    });
 });
 
 // FUNCION PARA ENCRIPTAR TEXTO
 function encryptText() {
-    let texto = '';
     const textoParaEncriptar = inputText.value.trim();
 
     // Verificar si el texto contiene solo letras minúsculas y espacios
@@ -39,12 +46,7 @@ function encryptText() {
         return;
     }
 
-    // Ocultar el muñeco
-    muñecoContainer.classList.add('hidden');
-
-    // Expande el textarea para ocupar todo el espacio
-    outputText.style.height = '100%';
-
+    let texto = '';
     for (let i = 0; i < textoParaEncriptar.length; i++) {
         switch (textoParaEncriptar[i]) {
             case 'a':
@@ -68,7 +70,13 @@ function encryptText() {
         }
     }
 
+    // Ocultar el muñeco y expandir el textarea
+    muñecoContainer.classList.add('hidden');
+    outputContainer.classList.add('expanded');
+    outputContainer.classList.remove('hidden');
+    outputText.style.flexGrow = '1';
     outputText.value = texto;
+    outputText.style.height = '50vh';
     copyButtonContainer.style.display = 'block';
 }
 
@@ -89,6 +97,11 @@ function decryptText() {
         textoDesencriptado = textoDesencriptado.replaceAll(arraPalabras[i], arraPalabras2[i]);
     }
 
+    // Ocultar el muñeco y expandir el textarea
+    muñecoContainer.classList.add('hidden');
+    outputContainer.classList.remove('hidden');
+    outputText.style.flexGrow = '1';
+    outputText.style.height = '50vh';
     outputText.value = textoDesencriptado;
     copyButtonContainer.style.display = 'none';
 }
@@ -104,14 +117,14 @@ function copyText() {
                 position: "top-end",
                 showConfirmButton: false,
                 timer: 1000,
-                background: '#C6F7A8',
+                background: '#fff',
                 icon: 'success',
                 title: 'Texto Copiado.'
             });
             // Borrar el texto y mostrar el muñeco
             outputText.value = '';
+            outputText.style.height = '100%';
             muñecoContainer.classList.remove('hidden');
-            outputText.style.height = '50%'; // Restablecer la altura del textarea
             copyButtonContainer.style.display = 'none';
         }).catch(err => {
             console.error('Error al copiar el texto: ', err);
