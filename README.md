@@ -29,4 +29,4 @@
 
 ---
 
-Con este desafío, ponemos a prueba nuestras habilidades de programación y diseño, creando una herramienta sencilla pero funcional para transformar mensajes. ¡Esperamos que disfrutes usándola tanto como nosotros disfrutamos creándola!
+Con este desafío, ponemos a prueba nuestras habilidades de programación y diseño, creando una herramienta sencilla pero funcional para transformar mensajes.
